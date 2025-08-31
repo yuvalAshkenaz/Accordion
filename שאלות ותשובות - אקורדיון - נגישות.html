@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>שאלות ותשובות</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style type="text/css">
+/*--------- Demo --------------*/
+.q-ul *{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.clear{clear:both;}
+/*--------- End Demo --------------*/
+
+
+.q-ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.q-ul > li .q-btn {
+	background: #eaebec;
+	display: flex;
+	width: 100%;
+	min-height: 40px;
+	align-items: center;
+	gap: 20px;
+	padding: 8px 15px;
+	border: none;
+	margin: 4px 0 0 0;
+	cursor: pointer;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+.q-btn-title {
+	margin: 0;
+	color: #444;
+	font-size: 16px;
+	font-weight: 400;
+}
+.q-ul > li .q-btn .q-plus-minus {
+	width: 21px;
+	height: 21px;
+	flex-shrink: 0;
+	margin: 0 auto 0 0;
+	position: relative;
+}
+.q-ul > li .q-btn:hover {
+	background: #bdc0c1;
+}
+.q-ul > li .q-btn .q-plus-minus::before,
+.q-ul > li .q-btn .q-plus-minus::after {
+	content: "";
+	background: #444;
+	position: absolute;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+.q-ul > li .q-btn .q-plus-minus::before {
+	width: 13px;
+	height: 3px;
+	left: 4px;
+	top: 9px;
+}
+.q-ul > li .q-btn .q-plus-minus::after {
+	width: 3px;
+	height: 13px;
+	top: 4px;
+	left: 9px;
+}
+.q-ul > li.active .q-btn .q-plus-minus::before {
+	-webkit-transform:scale(0.6,1);
+	transform:scale(0.6,1);
+}
+.q-ul > li.active .q-btn .q-plus-minus::after {
+	-webkit-transform:scale(1,0);
+	transform:scale(1,0);
+}
+/* 
+	.q-text :על האלמנט הזה transition לדאוג שלא יהיה
+	all על רקע אז לא לעשות transition אם רוצים לעשות
+	דוגמה:
+	transition: background 0.2s ease;
+*/
+.q-ul > li > .q-text {
+	background: #f2f4f5;
+	display: none;
+	padding: 8px 15px;
+	border-top: 1px solid #fff;
+}
+</style>
+</head>
+<body style="text-align:right;direction:rtl;font-family:arial;">
+	<div style="margin:100px auto;width:1000px;">
+		<h1>שאלות ותשובות</h1>
+		
+		<ul class="q-ul">
+			<li>
+				<button type="button" id="q-btn1" class="q-btn" aria-expanded="false" aria-controls="q-text1">
+					<h3 class="q-btn-title">לורם איפסום דולור סיט אמט</h3>
+					<span class="q-plus-minus"></span>
+				</button>
+				<div id="q-text1" class="q-text" aria-labelledby="q-btn1" role="region">
+					סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי.
+				</div>
+			</li>
+			<li>
+				<button type="button" id="q-btn2" class="q-btn" aria-expanded="false" aria-controls="q-text2">
+					<h3 class="q-btn-title">אפאח דלאמת יבש</h3>
+					<span class="q-plus-minus"></span>
+				</button>
+				<div id="q-text2" class="q-text" aria-labelledby="q-btn2" role="region">
+					סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי.
+				</div>
+			</li>
+		</ul>
+
+	</div>
+	<script type="text/javascript">
+	//FAQs
+	jQuery('.q-btn').click(function(){
+		var self = jQuery(this);
+		var ariaExpanded = self.attr('aria-expanded') === 'true';
+		var parent = self.parent();
+		jQuery('.q-btn').not(self).attr('aria-expanded', 'false');
+		self.attr('aria-expanded', !ariaExpanded);
+		jQuery('.q-ul > li.active').not(parent).removeClass('active').find('.q-text').slideUp();
+		parent.toggleClass('active').find('.q-text').slideToggle();
+	});
+	</script>
+</body>
+</html>

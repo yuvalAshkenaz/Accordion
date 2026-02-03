@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <title>שאלות ותשובות</title>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <style type="text/css">
 /*--------- Demo --------------*/
 .q-ul *{
@@ -14,81 +13,106 @@
 .clear{clear:both;}
 /*--------- End Demo --------------*/
 
-
-.q-ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.q-ul > li .q-btn {
-	background: #eaebec;
+.faq-accordion-list {
 	display: flex;
 	width: 100%;
-	min-height: 40px;
+	gap: 5px;
+	flex-direction: column;
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+}
+.faq-accordion-item {
+	width: 100%;
+}
+.faq-accordion-btn {
+	background: #F0F0F0;
+	display: flex;
+	width: 100%;
 	align-items: center;
+	padding: 10px 16px;
 	gap: 20px;
-	padding: 8px 15px;
-	border: none;
-	margin: 4px 0 0 0;
+	text-align: left;
+	justify-content: space-between;
 	cursor: pointer;
+	border: none;
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
-.q-btn-title {
-	margin: 0;
-	color: #444;
-	font-size: 16px;
+.faq-accordion-btn:hover,
+.faq-accordion-btn:focus-visible {
+	background: #dcdcdc;
+}
+.faq-accordion-title {
+	color: #161932;
+	font-size: 18px;
 	font-weight: 400;
+	line-height: 1.2;
+	margin: 0;
 }
-.q-ul > li .q-btn .q-plus-minus {
-	width: 21px;
-	height: 21px;
-	flex-shrink: 0;
-	margin: 0 auto 0 0;
+.faq-icon {
 	position: relative;
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
 }
-.q-ul > li .q-btn:hover {
-	background: #bdc0c1;
-}
-.q-ul > li .q-btn .q-plus-minus::before,
-.q-ul > li .q-btn .q-plus-minus::after {
-	content: "";
-	background: #444;
+.faq-icon::before,
+.faq-icon::after {
+	background: #161932;
 	position: absolute;
+	content: "";
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
-.q-ul > li .q-btn .q-plus-minus::before {
-	width: 13px;
-	height: 3px;
+.faq-icon::before {
+	width: 14px;
+	height: 2px;
 	left: 4px;
-	top: 9px;
+	top: 10px;
 }
-.q-ul > li .q-btn .q-plus-minus::after {
-	width: 3px;
-	height: 13px;
+.faq-icon::after {
+	width: 2px;
+	height: 14px;
 	top: 4px;
-	left: 9px;
+	left: 10px;
 }
-.q-ul > li.active .q-btn .q-plus-minus::before {
-	-webkit-transform:scale(0.6,1);
-	transform:scale(0.6,1);
+.faq-accordion-item.active .faq-icon::before {
+	-webkit-transform: scale(0.6,1);
+	transform: scale(0.6,1);
 }
-.q-ul > li.active .q-btn .q-plus-minus::after {
-	-webkit-transform:scale(1,0);
-	transform:scale(1,0);
+.faq-accordion-item.active .faq-icon::after {
+	-webkit-transform: scale(1,0);
+	transform: scale(1,0);
 }
-/* 
-	.q-text :על האלמנט הזה transition לדאוג שלא יהיה
-	all על רקע אז לא לעשות transition אם רוצים לעשות
-	דוגמה:
-	transition: background 0.2s ease;
-*/
-.q-ul > li > .q-text {
-	background: #f2f4f5;
-	display: none;
-	padding: 8px 15px;
-	border-top: 1px solid #fff;
+.faq-accordion-content {
+	width: 100%;
+	overflow: hidden;
+	transition: max-height 0.4s ease-out;
+}
+.faq-accordion-item:not(.active) .faq-accordion-content {
+	max-height: 0 !important;
+}
+.faq-content-inner {
+	color: #736F72;
+	font-size: 18px;
+	line-height: 1.6;
+	font-weight: 300;
+	padding: 10px 16px;
+}
+.faq-footer {
+	display: flex;
+	justify-content: center;
+}
+.faq-footer .y-btn {
+	background: #fff;
+	color: #161932;
+	border: 1px solid #161932;
+	font-size: 20px;
+}
+.faq-footer .y-btn:hover,
+.faq-footer .y-btn:focus-visible {
+	background: #161932;
+	color: #fff;
 }
 </style>
 </head>
@@ -96,23 +120,27 @@
 	<div style="margin:100px auto;width:1000px;">
 		<h1>שאלות ותשובות</h1>
 		
-		<ul class="q-ul">
-			<li>
-				<button type="button" id="q-btn1" class="q-btn" aria-expanded="false" aria-controls="q-text1">
-					<h3 class="q-btn-title">לורם איפסום דולור סיט אמט</h3>
-					<span class="q-plus-minus"></span>
+		<ul class="faq-accordion-list list">
+			<li class="faq-accordion-item">
+				<button type="button" id="faq-btn1" class="faq-accordion-btn tran03" aria-expanded="false" aria-controls="faq-text1">
+					<h3 class="faq-accordion-title">עסקאות סקנדרי בפתח! מהם חוקי המשחק החדשים?</h3>
+					<span class="faq-icon"></span>
 				</button>
-				<div id="q-text1" class="q-text" aria-labelledby="q-btn1" role="region">
-					סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי.
+				<div id="faq-text1" class="faq-accordion-content" aria-labelledby="faq-btn1" role="region">
+					<div class="faq-content-inner">
+						זרם עסקאות הסקנדרי התחדש לאחרונה, לאחר הקפאה ממושכת. בעסקאות כאלה, המניות נרכשות מבעלי מניות קיימים, בניגוד לעסקאות "רגילות" שבהן מונפקות מניות חדשות והון נכנס לחברה בתמורה. יתרון מרכזי בעסקאות סקנדרי הוא ההזדמנות לממש ערך עוד לפני האקזיט.
+					</div>
 				</div>
 			</li>
-			<li>
-				<button type="button" id="q-btn2" class="q-btn" aria-expanded="false" aria-controls="q-text2">
-					<h3 class="q-btn-title">אפאח דלאמת יבש</h3>
-					<span class="q-plus-minus"></span>
+			<li class="faq-accordion-item">
+				<button type="button" id="faq-btn2" class="faq-accordion-btn tran03" aria-expanded="false" aria-controls="faq-text2">
+					<h3 class="faq-accordion-title">כל מה שצריך לדעת על הערכות שווי לצורך הענקת אופציות</h3>
+					<span class="faq-icon"></span>
 				</button>
-				<div id="q-text2" class="q-text" aria-labelledby="q-btn2" role="region">
-					סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי.
+				<div id="faq-text2" class="faq-accordion-content" aria-labelledby="faq-btn2" role="region">
+					<div class="faq-content-inner">
+						הערכת שווי מקצועית היא קריטית בעת הענקת אופציות לעובדים (409A). תהליך זה מבטיח עמידה בתקנות המס ומונע סיכונים עתידיים לחברה ולעובדים. מומלץ להיעזר במומחה חיצוני כדי להבטיח אמינות מול רשויות המס והמשקיעים.
+					</div>
 				</div>
 			</li>
 		</ul>
@@ -120,14 +148,33 @@
 	</div>
 	<script type="text/javascript">
 	//FAQs
-	jQuery('.q-btn').click(function(){
-		var self = jQuery(this);
-		var ariaExpanded = self.attr('aria-expanded') === 'true';
-		var parent = self.parent();
-		jQuery('.q-btn').not(self).attr('aria-expanded', 'false');
-		self.attr('aria-expanded', !ariaExpanded);
-		jQuery('.q-ul > li.active').not(parent).removeClass('active').find('.q-text').slideUp();
-		parent.toggleClass('active').find('.q-text').slideToggle();
+	document.querySelectorAll('.faq-accordion-btn').forEach(btn => {
+		const parent = btn.closest('.faq-accordion-item');
+		const content = parent.querySelector('.faq-accordion-content');
+		const inner = parent.querySelector('.faq-content-inner');
+		
+		content.style.maxHeight = inner.offsetHeight + 'px';
+		btn.addEventListener('click', () => {
+			const isActive = parent.classList.contains('active');
+			const allItems = document.querySelectorAll('.faq-accordion-item');
+			allItems.forEach(item => {
+				item.classList.remove('active');
+				item.querySelector('.faq-accordion-btn').setAttribute('aria-expanded', 'false');
+			});
+			if (!isActive) {
+				parent.classList.add('active');
+				btn.setAttribute('aria-expanded', 'true');
+				if (window.innerWidth <= 767) {
+					setTimeout(() => {
+						const offset = btn.getBoundingClientRect().top + window.pageYOffset;
+						window.scrollTo({
+							top: offset,
+							behavior: 'smooth'
+						});
+					}, 400);
+				}
+			}
+		});
 	});
 	</script>
 </body>

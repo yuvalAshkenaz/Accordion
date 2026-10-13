@@ -1,0 +1,109 @@
+.presentation-group {
+	direction: rtl;
+}
+.faq-accordion-list {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+.faq-accordion-item {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+.faq-accordion-item.active {
+    border-color: #71F494;
+    background: rgba(113, 244, 148, 0.05);
+}
+.faq-accordion-btn {
+    background: transparent;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 20px 24px;
+    gap: 20px;
+    text-align: right;
+    justify-content: space-between;
+    cursor: pointer;
+    border: none;
+    color: #f8fafc;
+    font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+    transition: all 0.2s ease;
+}
+.faq-accordion-btn:hover,
+.faq-accordion-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.05);
+}
+.faq-accordion-btn:focus-visible {
+	outline: 2px solid #71F494;
+	outline-offset: -2px;
+}
+.faq-accordion-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
+}
+.faq-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.faq-icon::before,
+.faq-icon::after {
+    background: #94a3b8;
+    position: absolute;
+    content: "";
+    transition: all 0.3s ease;
+}
+.faq-icon::before {
+    width: 16px;
+    height: 2px;
+    left: 2px;
+    top: 9px;
+}
+.faq-icon::after {
+    width: 2px;
+    height: 16px;
+    top: 2px;
+    left: 9px;
+}
+.faq-accordion-item.active .faq-icon::before,
+.faq-accordion-item.active .faq-icon::after {
+    background: #71F494;
+}
+.faq-accordion-item.active .faq-icon::before {
+    transform: scale(0.8, 1);
+}
+.faq-accordion-item.active .faq-icon::after {
+    transform: scale(1, 0);
+}
+.faq-accordion-content {
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-accordion-item:not(.active) .faq-accordion-content {
+    max-height: 0 !important;
+	visibility: hidden;
+	-webkit-transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.4s;
+	transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.4s;
+}
+.faq-content-inner {
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 0 24px 24px 24px;
+}

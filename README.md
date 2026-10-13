@@ -1,63 +1,50 @@
-# אקורדיון שאלות ותשובות (FAQ Accordion)
+# FAQ Accordion
 
-אקורדיון נגיש ב-Vanilla JS (בלי jQuery), עם אנימציית פתיחה וסגירה חלקה לפי `max-height`. בנוי לאתרים בעברית (RTL).
+An accessible FAQ accordion in vanilla JS (no jQuery), with a smooth `max-height` open/close animation. Built for RTL (Hebrew) sites.
 
-## קבצים
+## Files
 
-| קובץ | תיאור |
+| File | Description |
 |---|---|
-| `demo.html` | דף הדגמה מלא, בעיצוב של https://y-tools.dooble.us/accordion/. נפתח ישירות בדפדפן. |
-| `style.css` | העיצוב של דף הכלים (ערכת נושא **כהה**). משמש רק לתצוגה החיה. |
-| `scripts.js` | הלוגיקה: פתיחה וסגירה, ARIA וחישוב גובה. |
-| `index.php` | העמוד של הכלי באתר Y-Tools (WordPress). הנתיבים הם דרך `THEME`. |
-| `logo.svg` | הלוגו שמוצג ב-`demo.html`. |
+| `demo.html` | Full demo page, styled like https://y-tools.dooble.us/accordion/. Open it directly in a browser. |
+| `style.css` | Styles of the demo page (dark theme). Used only for the live preview. |
+| `scripts.js` | Accordion logic: open/close, ARIA attributes and height calculation. |
+| `logo.svg` | Logo shown in `demo.html`. |
 
-## שימוש באתר
+## Usage
 
-להעתיק מהבלוק "קוד להטמעה" בדף ההדגמה: HTML, CSS ו-JS. ה-CSS שמוצג שם הוא גרסה **בהירה** לאתרים עם רקע לבן, והוא שונה מ-`style.css` בתיקייה הזו (הכהה).
+Copy the HTML, CSS and JS from the "Code to embed" section of `demo.html`. The CSS shown there is a **light** theme for sites with a white background, and differs from the dark `style.css` in this folder.
 
-מבנה ה-HTML:
+HTML structure:
 
 ```html
 <ul class="faq-accordion-list">
     <li class="faq-accordion-item">
         <h3 class="faq-accordion-title">
             <button type="button" class="faq-accordion-btn">
-                השאלה?
+                Question?
                 <span class="faq-icon" aria-hidden="true"></span>
             </button>
         </h3>
         <div class="faq-accordion-content">
-            <div class="faq-content-inner">התשובה.</div>
+            <div class="faq-content-inner">Answer.</div>
         </div>
     </li>
 </ul>
 ```
 
-- הכפתור נמצא **בתוך** ה-`h3` (ולא להפך). אפשר להחליף את רמת הכותרת לפי ההיררכיה בעמוד.
-- פריט שמקבל את ה-class `active` יהיה פתוח בטעינה.
+- The button sits **inside** the `h3`. Change the heading level to fit the page hierarchy.
+- An item with the `active` class is open on page load.
 
-## נגישות
+## Accessibility
 
-- `aria-expanded` ו-`aria-controls` על הכפתור, ומזהים ייחודיים נוצרים אוטומטית.
-- `role="region"` ו-`aria-labelledby` על התשובה, רק כשיש עד 6 פריטים באקורדיון (המלצת W3C).
-- תשובה סגורה מוסתרת עם `visibility: hidden`: אין לה פוקוס במקלדת והיא לא נקראת בקורא מסך. ההסתרה מתעכבת 0.4 שניות בסגירה כדי שהאנימציה תסתיים.
-- מסגרת פוקוס גלויה על הכפתור (`:focus-visible`).
+- `aria-expanded` and `aria-controls` on the button, with unique ids generated automatically.
+- `role="region"` and `aria-labelledby` on the answer, only when the accordion has up to 6 items (W3C recommendation).
+- Closed answers use `visibility: hidden`, so they are not focusable and not read by screen readers. The hiding is delayed by 0.4s on close so the animation can finish.
+- Visible focus outline on the button (`:focus-visible`).
 
-## התנהגות
+## Behavior
 
-- פתיחת פריט סוגרת את שאר הפריטים **באותו אקורדיון בלבד**, כך שאפשר לשים כמה אקורדיונים באותו עמוד.
-- הגובה מחושב אוטומטית ומתעדכן עם `ResizeObserver` (שינוי גודל מסך, גופנים או תמונות שנטענים באיחור). לדפדפנים ישנים יש fallback על `load` ו-`resize`.
-- בלי JS התשובות נשארות סגורות.
-
-## הערות
-
-- האנימציה (`max-height`, 0.4 שניות, `cubic-bezier(0.4, 0, 0.2, 1)`) נשארה זהה לגרסה הקודמת.
-- לא משתמשים ב-`<details>`/`<summary>` בכוונה: האנימציה הזו לא נתמכת שם בכל הדפדפנים.
-- בדף ההדגמה, צביעת התחביר משתמשת ב-class-ים `code-tag`, `code-attr`, `code-string`, `code-comment`, `code-keyword` ו-`code-function`.
-
-## הבדלים מהגרסה הישנה (מעבר מהעתקה קודמת)
-
-- נדרש לעדכן גם את ה-HTML: הכפתור עבר לתוך ה-`h3` ואייקון ה-+/- קיבל `aria-hidden="true"`.
-- ה-CSS החדש כולל `visibility: hidden` לתשובה סגורה, outline לפוקוס, וירושה של גודל וגופן ל-`.faq-accordion-btn`.
-- ב-JS: מזהים רצופים במקום `Math.random()`, סגירה בתוך אותו אקורדיון בלבד, ו-`ResizeObserver`.
+- Opening an item closes the other items in the **same accordion only**, so several accordions can live on one page.
+- Height is calculated automatically and kept up to date with `ResizeObserver` (window resize, late-loading fonts or images). Older browsers fall back to `load` and `resize` events.
+- Without JavaScript the answers stay closed.

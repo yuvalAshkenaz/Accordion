@@ -21,11 +21,11 @@ On screens up to **767px** wide the tabs turn into a smooth **accordion** automa
 
 ## 📦 Installation
 
-Download [`ytabs.css`](https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/ytabs.css) and [`ytabs.js`](https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/ytabs.js) and include them in your HTML. **Both files are needed**: the CSS styles the tabs and the accordion, and the script decides when the group becomes an accordion.
+Download [`ytabs.min.css`](https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/css/ytabs.min.css) and [`ytabs.min.js`](https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/js/ytabs.min.js) (or the readable [`ytabs.css`](https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/css/ytabs.css) and [`ytabs.js`](https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/js/ytabs.js)) from the `dist` folder and include them in your HTML. **Both files are needed**: the CSS styles the tabs and the accordion, and the script decides when the group becomes an accordion.
 
 ```html
-<link rel="stylesheet" href="ytabs.css" />
-<script src="ytabs.js"></script>
+<link rel="stylesheet" href="dist/css/ytabs.min.css" />
+<script src="dist/js/ytabs.min.js"></script>
 ```
 
 Put the `<script>` at the end of the `<body>`, after the tabs markup.
@@ -76,7 +76,7 @@ The first tab is open by default. The script adds `active`, `is-accordion` and a
 | 768px and up | Tabs. One panel is always open. |
 | Up to 767px | Accordion. Each panel moves under its own button, opens with a slide animation, and a click on the open item closes it. |
 
-When the group becomes an accordion the script adds the class `is-accordion` to `.tabs-group`, moves each panel into its `li`, and switches the roles from `tab` / `tabpanel` to buttons with `aria-expanded` and regions. When the screen gets wider, everything goes back. You can restyle the accordion with the `.tabs-group.is-accordion` selectors in `ytabs.css`.
+When the group becomes an accordion the script adds the class `is-accordion` to `.tabs-group`, moves each panel into its `li`, and switches the roles from `tab` / `tabpanel` to buttons with `aria-expanded` and regions. When the screen gets wider, everything goes back. You can restyle the accordion with the `.tabs-group.is-accordion` selectors in `dist/css/ytabs.css`.
 
 ---
 
@@ -91,7 +91,7 @@ The colors come from CSS variables. Set them in your own CSS (on `:root` or on a
 | `--text-muted` | `#565c7d` | Text color of the closed tabs. |
 | `--card-border` | `#b9c0e6` | Border color of the tabs and the panels. |
 
-The remaining colors (the blue accent `#517fe5`, white panels) are written in `ytabs.css`, so change them there or override the selectors.
+The remaining colors (the blue accent `#517fe5`, white panels) are written in `dist/css/ytabs.css`, so change them there or override the selectors.
 
 ---
 
@@ -108,7 +108,7 @@ The remaining colors (the blue accent `#517fe5`, white panels) are written in `y
 - Use real `button` elements for the tabs, so they work with the keyboard without extra code.
 - The script sets the ARIA roles for tabs, and switches them to the accordion pattern on small screens.
 - Moving to another tab moves the focus to the first link in its panel, or stays on the tab when the panel has no link.
-- The breakpoint (767px) is the `accordionQuery` line at the top of `ytabs.js`. Change `767px` there, and the matching `max-width` you use in your own CSS, if you need another one.
+- The breakpoint (767px) is the `accordionQuery` line at the top of `dist/js/ytabs.js` (and rebuild `ytabs.min.js`). Change `767px` there, and the matching `max-width` you use in your own CSS, if you need another one.
 
 ---
 

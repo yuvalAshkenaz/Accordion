@@ -6,7 +6,7 @@
 	<title>y-tabs demo – accessible tabs and mobile accordion</title>
 	<meta name="description" content="Demo of y-tabs, a free vanilla JavaScript tabs library that turns into an accordion on screens up to 767px. Accessible, keyboard support, several groups per page.">
 	<link rel="canonical" href="https://y-tools.dooble.us/ytabs/">
-	<link rel="stylesheet" href="ytabs.css">
+	<link rel="stylesheet" href="dist/css/ytabs.css">
 	<style type="text/css">
 	body {
 		background: #eceffb;
@@ -163,13 +163,13 @@
 
 	<section class="demo-card">
 		<h2>1. Download the files</h2>
-		<p class="demo-text">Download <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/ytabs.css" download>ytabs.css</a> and <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/ytabs.js" download>ytabs.js</a> (or copy them from this repository) and put them in your project, for example in the same folder as your HTML page. Both files are needed: the CSS styles the tabs and the accordion, and the script turns the group into an accordion on screens up to 767px.</p>
+		<p class="demo-text">Download <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/css/ytabs.min.css" download>ytabs.min.css</a> and <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/js/ytabs.min.js" download>ytabs.min.js</a> (or copy them from the <code>dist</code> folder of this repository) and put them in your project. The readable sources are <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/css/ytabs.css" download>ytabs.css</a> and <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/js/ytabs.js" download>ytabs.js</a>. Both files are needed: the CSS styles the tabs and the accordion, and the script turns the group into an accordion on screens up to 767px.</p>
 		<p class="demo-text">Add them to your page. The <code>&lt;script&gt;</code> goes at the end of the <code>&lt;body&gt;</code>, after the tabs markup.</p>
-		<pre class="demo-code" tabindex="0"><code>&lt;link rel="stylesheet" href="ytabs.css" /&gt;
+		<pre class="demo-code" tabindex="0"><code>&lt;link rel="stylesheet" href="ytabs.min.css" /&gt;
 
 &lt;!-- ...your tabs HTML... --&gt;
 
-&lt;script src="ytabs.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="ytabs.min.js"&gt;&lt;/script&gt;</code></pre>
 	</section>
 
 	<section class="demo-card">
@@ -202,7 +202,7 @@
 	<div class="demo-footer">Use the arrow keys to move between tabs. On a screen up to 767px wide, tap a title to open or close its panel.</div>
 </main>
 
-<script src="ytabs.js"></script>
+<script src="dist/js/ytabs.js"></script>
 
 </body>
 </html>

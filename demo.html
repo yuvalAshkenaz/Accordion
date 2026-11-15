@@ -1,478 +1,208 @@
-<!doctype html>
-<html lang="he">
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>FAQ Accordion - Y-Tools</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&amp;family=Rubik:wght@400;500;700&amp;display=swap" />
-	<style>
-*,
-*::before,
-*::after {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-body {
-	background-color: #0f172a;
-	background-attachment: fixed;
-	background-image: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%), radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%);
-	color: #f8fafc;
-	margin: 0;
-	padding: 0 0 40px 0;
-	font-family: 'Rubik', 'Outfit', sans-serif;
-	direction: ltr;
-}
-h1 {
-	font-family: 'Outfit', sans-serif;
-	font-size: 4rem;
-	font-weight: 700;
-	margin: 40px auto 10px;
-	text-align: center;
-	background: linear-gradient(to right, #00ff34 0%, #00efe6 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	letter-spacing: -1px;
-}
-strong,
-h2 {
-	font-weight: 500;
-}
-.presentation-group {
-	background: #0b0f1970;
-	padding: 40px;
-	margin: 0 auto 40px;
-	border-radius: 16px;
-	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-	width: 100%;
-	max-width: 900px;
-	border: 1px solid #1e293b;
-}
-.logo-a {
-	position: fixed;
-	left: 20px;
-	top: 20px;
-	z-index: 10;
-}
-.code-copy-box {
-	background: #161f30;
-	border-radius: 8px;
-	border: 1px solid #24324d;
-	margin-top: 8px;
-}
-.source-wrapper {
-	margin-bottom: 25px;
-}
-.source-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background: #1c263b;
-	padding: 10px 15px;
-	border-radius: 8px 8px 0 0;
-	border: 1px solid #24324d;
-	border-bottom: none;
-	font-size: 14px;
-	color: #cbd5e1;
-}
-.full-source {
-	margin-top: 0;
-	border-radius: 0 0 8px 8px;
-	padding: 15px;
-}
-.full-source pre {
-	margin: 0;
-	max-height: 250px;
-	overflow-y: auto;
-	direction: ltr;
-}
-.full-source .code-snippet {
-	font-family: 'Courier New', Courier, monospace;
-	font-size: 14px;
-	color: #e2e8f0;
-	white-space: pre-wrap;
-}
-.btn-copy {
-	background: #111729;
-	border: 1px solid #334155;
-	color: #94a3b8;
-	padding: 6px 12px;
-	font-size: 12px;
-	font-weight: 600;
-	border-radius: 6px;
-	cursor: pointer;
-	-webkit-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-.btn-copy:hover,
-.btn-copy:focus-visible {
-	background: rgba(113, 244, 148, 0.1);
-	color: #71F494;
-	border-color: #71F494;
-}
-.btn-copy.copied {
-	background: #71F494;
-	color: #111729;
-	border-color: #71F494;
-}
-pre,
-code {
-	tab-size: 4;
-	-moz-tab-size: 4;
-}
-[class*=language-] {
-	background: transparent !important;
-	padding: 15px !important;
-	box-shadow: none !important;
-}
-pre {
-	color: #d4d4d4;
-	padding: 15px;
-	border-radius: 5px;
-	font-family: Consolas, Monaco, monospace;
-	line-height: 1.5;
-}
-.code-tag {
-	color: #569cd6;
-}
-.code-attr {
-	color: #9cdcfe;
-}
-.code-string {
-	color: #ce9178;
-}
-.code-comment {
-	color: #6a9955;
-	font-style: italic;
-}
-.code-keyword {
-	color: #569cd6;
-	font-weight: bold;
-}
-.code-function {
-	color: #dcdcaa;
-}
-@media (max-width: 768px) {
-	h1 {
-		font-size: 3rem;
-		margin-top: 80px;
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>y-tabs demo – accessible tabs and mobile accordion</title>
+	<meta name="description" content="Demo of y-tabs, a free vanilla JavaScript tabs library that turns into an accordion on screens up to 767px. Accessible, keyboard support, several groups per page.">
+	<link rel="canonical" href="https://y-tools.dooble.us/ytabs/">
+	<link rel="stylesheet" href="ytabs.css">
+	<style type="text/css">
+	body {
+		background: #eceffb;
+		margin: 0;
+		padding: 40px 20px;
+		color: #141833;
+		font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 	}
-	.logo-a {
-		left: 10px;
-		top: 10px;
+	.demo-wrap {
+		max-width: 900px;
+		margin: 0 auto;
 	}
-	.presentation-group {
-		padding: 30px 20px;
+	.demo-title {
+		margin: 0 0 8px 0;
+		color: #517fe5;
+		font-size: 2.6rem;
+		text-align: center;
 	}
-}
+	.demo-intro {
+		margin: 0 0 32px 0;
+		color: #565c7d;
+		font-size: 1.1rem;
+		line-height: 1.6;
+		text-align: center;
+	}
+	.demo-intro a,
+	.demo-footer a {
+		color: #3560cf;
+	}
+	.demo-card {
+		background: #fff;
+		margin: 0 0 24px 0;
+		padding: 24px;
+		border: 1.5px solid #b9c0e6;
+		border-radius: 16px;
+	}
+	.demo-card h2 {
+		margin: 0 0 16px 0;
+		padding: 0 0 10px 0;
+		border-bottom: 2px solid #d5daf0;
+		font-size: 1.3rem;
+	}
+	.demo-card .tabs-group {
+		margin: 0;
+	}
+	.demo-text {
+		margin: 0 0 12px 0;
+		color: #565c7d;
+		line-height: 1.6;
+	}
+	.demo-text a {
+		color: #3560cf;
+	}
+	.demo-text code {
+		padding: 1px 6px;
+		border-radius: 4px;
+		background: #eef3fd;
+		color: #3560cf;
+		font-family: 'Fira Code', Consolas, monospace;
+		font-size: 0.85rem;
+	}
+	.demo-code {
+		margin: 0;
+		padding: 15px;
+		background: #f6f7fd;
+		border: 1.5px solid #d5daf0;
+		border-radius: 10px;
+		color: #2a2f55;
+		font-family: 'Fira Code', Consolas, monospace;
+		font-size: 13px;
+		line-height: 1.6;
+		overflow-x: auto;
+		tab-size: 4;
+	}
+	.demo-code:focus-visible {
+		outline: 3px solid #517fe5;
+		outline-offset: 2px;
+	}
+	.demo-footer {
+		color: #565c7d;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
-	<a href="demo.html" class="logo-a" title="Y Tools">
-		<img src="logo.svg" alt="Y Tools" width="60" height="60" />
-	</a>
-<link rel="stylesheet" href="style.css"/>
 
-<h1 class="page-title">FAQ Accordion</h1>
+<main class="demo-wrap">
+	<h1 class="demo-title">y-tabs</h1>
+	<div class="demo-intro">Accessible tabs that turn into an accordion on screens up to 767px.<br>Docs and live page: <a href="https://y-tools.dooble.us/ytabs/">y-tools.dooble.us/ytabs</a></div>
 
-<div class="presentation-group">
+	<section class="demo-card">
+		<h2>Tabs</h2>
+		<div class="tabs-group">
+			<ul class="tabs-list" role="tablist">
+				<li><button type="button" class="tabs-btn">Credit solutions</button></li>
+				<li><button type="button" class="tabs-btn">Card processing</button></li>
+				<li><button type="button" class="tabs-btn">Risk management</button></li>
+				<li><button type="button" class="tabs-btn">Financial consulting</button></li>
+			</ul>
 
-    <h2 style="margin-top: 0; color: #ffffff; border-bottom: 2px solid #1e293b; padding-bottom: 10px;">תצוגה חיה</h2>
+			<div class="tabs-div">
+				<h3>Customized non-bank credit</h3>
+				<p>We offer a wide range of credit solutions tailored precisely to your business needs. From working capital loans, through advanced equipment financing, to complex import financing solutions.</p>
+				<ul>
+					<li>Fast digital approval process.</li>
+					<li>Flexible repayment terms matched to your business cash flow.</li>
+					<li>No impact on your bank obligo.</li>
+				</ul>
+			</div>
 
-    <div style="max-width: 800px; margin: 40px auto; text-align: right; direction: rtl;">
-        <ul class="faq-accordion-list">
-            <li class="faq-accordion-item">
-                <h3 class="faq-accordion-title">
-                    <button type="button" class="faq-accordion-btn">
-                        עסקאות סקנדרי בפתח! מהם חוקי המשחק החדשים?
-                        <span class="faq-icon" aria-hidden="true"></span>
-                    </button>
-                </h3>
-                <div class="faq-accordion-content">
-                    <div class="faq-content-inner">
-                        זרם עסקאות הסקנדרי התחדש לאחרונה, לאחר הקפאה ממושכת. בעסקאות כאלה, המניות נרכשות מבעלי מניות קיימים, בניגוד לעסקאות "רגילות" שבהן מונפקות מניות חדשות והון נכנס לחברה בתמורה. יתרון מרכזי בעסקאות סקנדרי הוא ההזדמנות לממש ערך עוד לפני האקזיט.
-                    </div>
-                </div>
-            </li>
-            <li class="faq-accordion-item">
-                <h3 class="faq-accordion-title">
-                    <button type="button" class="faq-accordion-btn">
-                        כל מה שצריך לדעת על הערכות שווי לצורך הענקת אופציות
-                        <span class="faq-icon" aria-hidden="true"></span>
-                    </button>
-                </h3>
-                <div class="faq-accordion-content">
-                    <div class="faq-content-inner">
-                        הערכת שווי מקצועית היא קריטית בעת הענקת אופציות לעובדים (409A). תהליך זה מבטיח עמידה בתקנות המס ומונע סיכונים עתידיים לחברה ולעובדים. מומלץ להיעזר במומחה חיצוני כדי להבטיח אמינות מול רשויות המס והמשקיעים.
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+			<div class="tabs-div">
+				<h3>Advanced clearing systems</h3>
+				<p>Smart clearing solutions that let you accept payments from all types of credit cards, locally and worldwide, at the highest security level (PCI DSS standard).</p>
+				<p>Our systems integrate easily with any e-commerce site and cash register, and allow fast crediting to your bank account.</p>
+			</div>
 
-    <h2 style="margin-top: 50px; color: #ffffff; border-bottom: 2px solid #1e293b; padding-bottom: 10px;">קוד להטמעה</h2>
+			<div class="tabs-div">
+				<h3>Real-time control and monitoring</h3>
+				<p>Smart technological tools for analyzing and managing financial risks. Our system monitors suspicious transactions, assesses customer stability, and alerts you in real time about anomalies.</p>
+			</div>
 
-    <div class="source-wrapper">
-        <div class="source-header">
-            <strong>1. HTML</strong>
-            <button class="btn-copy" onclick="copyCode(this)">העתק קוד</button>
-        </div>
-        <div class="code-copy-box full-source">
-            <pre><code class="code-snippet language-markup"><span class="code-tag">&lt;ul</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-list"</span><span class="code-tag">&gt;</span>
-    <span class="code-tag">&lt;li</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-item"</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;h3</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-title"</span><span class="code-tag">&gt;</span>
-            <span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-string">"button"</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-btn"</span><span class="code-tag">&gt;</span>
-                כותרת השאלה הראשונה?
-                <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"faq-icon"</span> <span class="code-attr">aria-hidden</span>=<span class="code-string">"true"</span><span class="code-tag">&gt;</span><span class="code-tag">&lt;/span</span><span class="code-tag">&gt;</span>
-            <span class="code-tag">&lt;/button</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;/h3</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-content"</span><span class="code-tag">&gt;</span>
-            <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"faq-content-inner"</span><span class="code-tag">&gt;</span>
-                כאן נכנסת התשובה המפורטת לשאלה. האקורדיון יחשב את הגובה אוטומטית.
-            <span class="code-tag">&lt;/div</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;/div</span><span class="code-tag">&gt;</span>
-    <span class="code-tag">&lt;/li</span><span class="code-tag">&gt;</span>
-    <span class="code-tag">&lt;li</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-item"</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;h3</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-title"</span><span class="code-tag">&gt;</span>
-            <span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-string">"button"</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-btn"</span><span class="code-tag">&gt;</span>
-                כותרת השאלה השנייה?
-                <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"faq-icon"</span> <span class="code-attr">aria-hidden</span>=<span class="code-string">"true"</span><span class="code-tag">&gt;</span><span class="code-tag">&lt;/span</span><span class="code-tag">&gt;</span>
-            <span class="code-tag">&lt;/button</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;/h3</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"faq-accordion-content"</span><span class="code-tag">&gt;</span>
-            <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"faq-content-inner"</span><span class="code-tag">&gt;</span>
-                עוד תשובה מפורטת שתופיע בלחיצה אנימטיבית.
-            <span class="code-tag">&lt;/div</span><span class="code-tag">&gt;</span>
-        <span class="code-tag">&lt;/div</span><span class="code-tag">&gt;</span>
-    <span class="code-tag">&lt;/li</span><span class="code-tag">&gt;</span>
-<span class="code-tag">&lt;/ul</span><span class="code-tag">&gt;</span></code></pre>
-        </div>
-    </div>
+			<div class="tabs-div">
+				<h3>Our experts at your service</h3>
+				<p>Personal guidance from a team of experts with decades of experience in finance, banking and capital markets. We analyze your business activity and build a winning strategy together.</p>
+			</div>
+		</div>
+	</section>
 
-    <div class="source-wrapper">
-        <div class="source-header">
-            <strong>2. CSS</strong>
-            <button class="btn-copy" onclick="copyCode(this)">העתק קוד</button>
-        </div>
-        <div class="code-copy-box full-source">
-            <pre><code class="code-snippet language-css"><span class="code-function">.faq-accordion-list</span> {
-    <span class="code-attr">display</span>: <span class="code-string">flex</span>;
-    <span class="code-attr">width</span>: <span class="code-string">100%</span>;
-    <span class="code-attr">gap</span>: <span class="code-string">12px</span>;
-    <span class="code-attr">flex-direction</span>: <span class="code-string">column</span>;
-    <span class="code-attr">margin</span>: <span class="code-string">0 auto</span>;
-    <span class="code-attr">padding</span>: <span class="code-string">0</span>;
-    <span class="code-attr">list-style</span>: <span class="code-string">none</span>;
-}
-<span class="code-function">.faq-accordion-item</span> {
-    <span class="code-attr">width</span>: <span class="code-string">100%</span>;
-    <span class="code-attr">background</span>: <span class="code-string">#f8fafc</span>;
-    <span class="code-attr">border</span>: <span class="code-string">1px solid #e2e8f0</span>;
-    <span class="code-attr">border-radius</span>: <span class="code-string">12px</span>;
-    <span class="code-attr">overflow</span>: <span class="code-string">hidden</span>;
-    <span class="code-attr">transition</span>: <span class="code-string">all 0.3s ease</span>;
-}
-<span class="code-function">.faq-accordion-item.active</span> {
-    <span class="code-attr">border-color</span>: <span class="code-string">#16a34a</span>;
-    <span class="code-attr">background</span>: <span class="code-string">#f0fdf4</span>;
-}
-<span class="code-function">.faq-accordion-btn</span> {
-    <span class="code-attr">background</span>: <span class="code-string">transparent</span>;
-    <span class="code-attr">display</span>: <span class="code-string">flex</span>;
-    <span class="code-attr">width</span>: <span class="code-string">100%</span>;
-    <span class="code-attr">align-items</span>: <span class="code-string">center</span>;
-    <span class="code-attr">padding</span>: <span class="code-string">20px 24px</span>;
-    <span class="code-attr">gap</span>: <span class="code-string">20px</span>;
-    <span class="code-attr">text-align</span>: <span class="code-string">right</span>;
-    <span class="code-attr">justify-content</span>: <span class="code-string">space-between</span>;
-    <span class="code-attr">cursor</span>: <span class="code-string">pointer</span>;
-    <span class="code-attr">border</span>: <span class="code-string">none</span>;
-    <span class="code-attr">color</span>: <span class="code-string">#0f172a</span>;
-    <span class="code-attr">font-family</span>: <span class="code-string">inherit</span>;
-	<span class="code-attr">font-size</span>: <span class="code-string">inherit</span>;
-	<span class="code-attr">font-weight</span>: <span class="code-string">inherit</span>;
-	<span class="code-attr">line-height</span>: <span class="code-string">inherit</span>;
-    <span class="code-attr">transition</span>: <span class="code-string">all 0.2s ease</span>;
-}
-<span class="code-function">.faq-accordion-btn:hover,</span>
-<span class="code-function">.faq-accordion-btn:focus-visible</span> {
-    <span class="code-attr">background</span>: <span class="code-string">rgba(15, 23, 42, 0.05)</span>;
-}
-<span class="code-function">.faq-accordion-btn:focus-visible</span> {
-	<span class="code-attr">outline</span>: <span class="code-string">2px solid #16a34a</span>;
-	<span class="code-attr">outline-offset</span>: <span class="code-string">-2px</span>;
-}
-<span class="code-function">.faq-accordion-title</span> {
-    <span class="code-attr">font-size</span>: <span class="code-string">18px</span>;
-    <span class="code-attr">font-weight</span>: <span class="code-string">500</span>;
-    <span class="code-attr">line-height</span>: <span class="code-string">1.4</span>;
-    <span class="code-attr">margin</span>: <span class="code-string">0</span>;
-}
-<span class="code-function">.faq-icon</span> {
-    <span class="code-attr">position</span>: <span class="code-string">relative</span>;
-    <span class="code-attr">width</span>: <span class="code-string">20px</span>;
-    <span class="code-attr">height</span>: <span class="code-string">20px</span>;
-    <span class="code-attr">flex-shrink</span>: <span class="code-string">0</span>;
-}
-<span class="code-function">.faq-icon::before,</span>
-<span class="code-function">.faq-icon::after</span> {
-    <span class="code-attr">background</span>: <span class="code-string">#64748b</span>;
-    <span class="code-attr">position</span>: <span class="code-string">absolute</span>;
-    <span class="code-attr">content</span>: <span class="code-string">""</span>;
-    <span class="code-attr">transition</span>: <span class="code-string">all 0.3s ease</span>;
-}
-<span class="code-function">.faq-icon::before</span> {
-    <span class="code-attr">width</span>: <span class="code-string">16px</span>;
-    <span class="code-attr">height</span>: <span class="code-string">2px</span>;
-    <span class="code-attr">left</span>: <span class="code-string">2px</span>;
-    <span class="code-attr">top</span>: <span class="code-string">9px</span>;
-}
-<span class="code-function">.faq-icon::after</span> {
-    <span class="code-attr">width</span>: <span class="code-string">2px</span>;
-    <span class="code-attr">height</span>: <span class="code-string">16px</span>;
-    <span class="code-attr">top</span>: <span class="code-string">2px</span>;
-    <span class="code-attr">left</span>: <span class="code-string">9px</span>;
-}
-<span class="code-function">.faq-accordion-item.active .faq-icon::before,</span>
-<span class="code-function">.faq-accordion-item.active .faq-icon::after</span> {
-    <span class="code-attr">background</span>: <span class="code-string">#16a34a</span>;
-}
-<span class="code-function">.faq-accordion-item.active .faq-icon::before</span> {
-    <span class="code-attr">transform</span>: <span class="code-string">scale(0.8, 1)</span>;
-}
-<span class="code-function">.faq-accordion-item.active .faq-icon::after</span> {
-    <span class="code-attr">transform</span>: <span class="code-string">scale(1, 0)</span>;
-}
-<span class="code-function">.faq-accordion-content</span> {
-    <span class="code-attr">width</span>: <span class="code-string">100%</span>;
-    <span class="code-attr">overflow</span>: <span class="code-string">hidden</span>;
-    <span class="code-attr">transition</span>: <span class="code-string">max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)</span>;
-}
-<span class="code-function">.faq-accordion-item:not(.active) .faq-accordion-content</span> {
-    <span class="code-attr">max-height</span>: <span class="code-string">0 !important</span>;
-	<span class="code-attr">visibility</span>: <span class="code-string">hidden</span>;
-	<span class="code-attr">-webkit-transition</span>: <span class="code-string">max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.4s</span>;
-	<span class="code-attr">transition</span>: <span class="code-string">max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.4s</span>;
-}
-<span class="code-function">.faq-content-inner</span> {
-    <span class="code-attr">color</span>: <span class="code-string">#475569</span>;
-    <span class="code-attr">font-size</span>: <span class="code-string">16px</span>;
-    <span class="code-attr">line-height</span>: <span class="code-string">1.6</span>;
-    <span class="code-attr">padding</span>: <span class="code-string">0 24px 24px 24px</span>;
-}</code></pre>
-        </div>
-    </div>
+	<section class="demo-card">
+		<h2>A second group on the same page</h2>
+		<div class="tabs-group">
+			<ul class="tabs-list" role="tablist">
+				<li><button type="button" class="tabs-btn">Overview</button></li>
+				<li><button type="button" class="tabs-btn">Features</button></li>
+				<li><button type="button" class="tabs-btn">Support</button></li>
+			</ul>
 
-    <div class="source-wrapper">
-        <div class="source-header">
-            <strong>3. JavaScript</strong>
-            <button class="btn-copy" onclick="copyCode(this)">העתק קוד</button>
-        </div>
-        <div class="code-copy-box full-source">
-            <pre><code class="code-snippet language-javascript">document.<span class="code-function">addEventListener</span>(<span class="code-string">"DOMContentLoaded"</span>, <span class="code-keyword">function</span>() {
-    <span class="code-keyword">const</span> lists = document.<span class="code-function">querySelectorAll</span>(<span class="code-string">'.faq-accordion-list'</span>);
-    <span class="code-keyword">if</span> (!lists.length) <span class="code-keyword">return</span>;
+			<div class="tabs-div">
+				<h3>Overview</h3>
+				<p>Every <code>.tabs-group</code> works on its own, so you can place as many groups as you need on one page.</p>
+			</div>
 
-    <span class="code-comment">// מונה משותף לכל העמוד - מבטיח מזהים ייחודיים גם כשיש כמה אקורדיונים</span>
-    <span class="code-keyword">let</span> uid = 0;
+			<div class="tabs-div">
+				<h3>Features</h3>
+				<p>ARIA roles, a roving tabindex, arrow keys, and a smooth accordion on mobile. Resize the window below 768px to see it.</p>
+			</div>
 
-    <span class="code-comment">// עדכון ה-max-height של התוכן לפי הגובה האמיתי של התוכן הפנימי</span>
-    <span class="code-keyword">function</span> <span class="code-function">updateHeight</span>(content, inner) {
-        <span class="code-keyword">if</span> (!content || !inner) <span class="code-keyword">return</span>;
-        content.style.maxHeight = inner.offsetHeight + <span class="code-string">'px'</span>;
-    }
+			<div class="tabs-div">
+				<h3>Support</h3>
+				<p>Questions and ideas are welcome on <a href="https://y-tools.dooble.us/ytabs/">the live page</a>.</p>
+			</div>
+		</div>
+	</section>
 
-    <span class="code-comment">// מעקב אחרי שינויי גובה (גופנים, תמונות, שינוי גודל מסך) ועדכון ה-max-height</span>
-    <span class="code-keyword">function</span> <span class="code-function">watchHeight</span>(content, inner) {
-        <span class="code-keyword">if</span> (!content || !inner) <span class="code-keyword">return</span>;
-        <span class="code-keyword">if</span> (<span class="code-string">'ResizeObserver'</span> <span class="code-keyword">in</span> window) {
-            <span class="code-keyword">new</span> <span class="code-function">ResizeObserver</span>(<span class="code-keyword">function</span>() {
-                <span class="code-function">updateHeight</span>(content, inner);
-            }).<span class="code-function">observe</span>(inner);
-            <span class="code-keyword">return</span>;
-        }
-        <span class="code-function">updateHeight</span>(content, inner);
-        window.<span class="code-function">addEventListener</span>(<span class="code-string">'load'</span>, <span class="code-keyword">function</span>() { <span class="code-function">updateHeight</span>(content, inner); });
-        window.<span class="code-function">addEventListener</span>(<span class="code-string">'resize'</span>, <span class="code-keyword">function</span>() { <span class="code-function">updateHeight</span>(content, inner); });
-    }
+	<section class="demo-card">
+		<h2>1. Download the files</h2>
+		<p class="demo-text">Download <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/ytabs.css" download>ytabs.css</a> and <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/ytabs.js" download>ytabs.js</a> (or copy them from this repository) and put them in your project, for example in the same folder as your HTML page. Both files are needed: the CSS styles the tabs and the accordion, and the script turns the group into an accordion on screens up to 767px.</p>
+		<p class="demo-text">Add them to your page. The <code>&lt;script&gt;</code> goes at the end of the <code>&lt;body&gt;</code>, after the tabs markup.</p>
+		<pre class="demo-code" tabindex="0"><code>&lt;link rel="stylesheet" href="ytabs.css" /&gt;
 
-    <span class="code-comment">// הפעלת אקורדיון אחד: נגישות, גובה דינמי ולחיצה</span>
-    <span class="code-keyword">function</span> <span class="code-function">initAccordion</span>(list) {
-        <span class="code-keyword">const</span> items = list.<span class="code-function">querySelectorAll</span>(<span class="code-string">'.faq-accordion-item'</span>);
-        <span class="code-keyword">if</span> (!items.length) <span class="code-keyword">return</span>;
+&lt;!-- ...your tabs HTML... --&gt;
 
-        <span class="code-comment">// לפי הנחיות W3C - role="region" רק כשיש עד 6 פריטים, כדי לא להציף את ה-landmarks</span>
-        <span class="code-keyword">const</span> useRegion = items.length &lt;= 6;
+&lt;script src="ytabs.js"&gt;&lt;/script&gt;</code></pre>
+	</section>
 
-        items.<span class="code-function">forEach</span>(item =&gt; {
-            <span class="code-keyword">const</span> btn = item.<span class="code-function">querySelector</span>(<span class="code-string">'.faq-accordion-btn'</span>);
-            <span class="code-keyword">const</span> content = item.<span class="code-function">querySelector</span>(<span class="code-string">'.faq-accordion-content'</span>);
-            <span class="code-keyword">const</span> inner = item.<span class="code-function">querySelector</span>(<span class="code-string">'.faq-content-inner'</span>);
-            <span class="code-keyword">if</span> (!btn || !content || !inner) <span class="code-keyword">return</span>;
+	<section class="demo-card">
+		<h2>2. Add the HTML</h2>
+		<p class="demo-text">Wrap each set of tabs in <code>.tabs-group</code>. Inside it, put a <code>ul.tabs-list</code> with a <code>button.tabs-btn</code> in every <code>li</code>, and after the list one <code>.tabs-div</code> panel for every button, in the same order as the buttons. You can use as many groups as you need on a page.</p>
+		<pre class="demo-code" tabindex="0"><code>&lt;!-- Wrapper: one .tabs-group per set of tabs --&gt;
+&lt;div class="tabs-group"&gt;
 
-            uid++;
-            <span class="code-keyword">const</span> btnId = <span class="code-string">'faq-btn-'</span> + uid;
-            <span class="code-keyword">const</span> contentId = <span class="code-string">'faq-text-'</span> + uid;
+	&lt;!-- Buttons: class tabs-list on the ul, class tabs-btn on every button --&gt;
+	&lt;ul class="tabs-list" role="tablist"&gt;
+		&lt;li&gt;&lt;button type="button" class="tabs-btn"&gt;First tab&lt;/button&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;button type="button" class="tabs-btn"&gt;Second tab&lt;/button&gt;&lt;/li&gt;
+	&lt;/ul&gt;
 
-            btn.id = btnId;
-            btn.<span class="code-function">setAttribute</span>(<span class="code-string">'aria-controls'</span>, contentId);
-            btn.<span class="code-function">setAttribute</span>(<span class="code-string">'aria-expanded'</span>, item.classList.<span class="code-function">contains</span>(<span class="code-string">'active'</span>) ? <span class="code-string">'true'</span> : <span class="code-string">'false'</span>);
+	&lt;!-- Panels: class tabs-div, same order as the buttons --&gt;
+	&lt;div class="tabs-div"&gt;
+		&lt;h3&gt;First panel&lt;/h3&gt;
+		&lt;p&gt;Content of the first tab.&lt;/p&gt;
+	&lt;/div&gt;
 
-            content.id = contentId;
-            <span class="code-keyword">if</span> (useRegion) {
-                content.<span class="code-function">setAttribute</span>(<span class="code-string">'role'</span>, <span class="code-string">'region'</span>);
-                content.<span class="code-function">setAttribute</span>(<span class="code-string">'aria-labelledby'</span>, btnId);
-            }
+	&lt;div class="tabs-div"&gt;
+		&lt;h3&gt;Second panel&lt;/h3&gt;
+		&lt;p&gt;Content of the second tab.&lt;/p&gt;
+	&lt;/div&gt;
 
-            <span class="code-function">watchHeight</span>(content, inner);
+&lt;/div&gt;</code></pre>
+		<p class="demo-text">The script adds the <code>active</code> class and all the <code>aria-*</code> attributes by itself. On mobile it also adds <code>is-accordion</code> to the <code>.tabs-group</code>.</p>
+	</section>
 
-            btn.<span class="code-function">addEventListener</span>(<span class="code-string">'click'</span>, () =&gt; {
-                <span class="code-keyword">const</span> isActive = item.classList.<span class="code-function">contains</span>(<span class="code-string">'active'</span>);
+	<div class="demo-footer">Use the arrow keys to move between tabs. On a screen up to 767px wide, tap a title to open or close its panel.</div>
+</main>
 
-                <span class="code-comment">// סגירת שאר הפריטים באותו אקורדיון בלבד</span>
-                items.<span class="code-function">forEach</span>(otherItem =&gt; {
-                    otherItem.classList.<span class="code-function">remove</span>(<span class="code-string">'active'</span>);
-                    <span class="code-keyword">const</span> otherBtn = otherItem.<span class="code-function">querySelector</span>(<span class="code-string">'.faq-accordion-btn'</span>);
-                    <span class="code-keyword">if</span> (otherBtn) otherBtn.<span class="code-function">setAttribute</span>(<span class="code-string">'aria-expanded'</span>, <span class="code-string">'false'</span>);
-                });
+<script src="ytabs.js"></script>
 
-                <span class="code-comment">// פתיחת הפריט הנוכחי אם היה סגור</span>
-                <span class="code-keyword">if</span> (!isActive) {
-                    item.classList.<span class="code-function">add</span>(<span class="code-string">'active'</span>);
-                    btn.<span class="code-function">setAttribute</span>(<span class="code-string">'aria-expanded'</span>, <span class="code-string">'true'</span>);
-                }
-            });
-        });
-    }
-
-    lists.<span class="code-function">forEach</span>(initAccordion);
-});</code></pre>
-        </div>
-    </div>
-
-</div>
-
-<script type="text/javascript" src="scripts.js"></script>
-	<script>
-// העתקת קוד ללוח בלחיצה על כפתור "העתק קוד"
-function copyCode(buttonElement) {
-	if (!buttonElement) return;
-	var wrapper = buttonElement.closest('.source-wrapper');
-	var codeElement = wrapper ? wrapper.querySelector('.code-snippet') : null;
-	if (!codeElement) return;
-	navigator.clipboard.writeText(codeElement.innerText).then(function() {
-		var originalText = buttonElement.textContent;
-		buttonElement.textContent = 'הועתק! ✔';
-		buttonElement.classList.add('copied');
-		setTimeout(function() {
-			buttonElement.textContent = originalText;
-			buttonElement.classList.remove('copied');
-		}, 2000);
-	}).catch(function(err) {
-		console.error('Error copying text: ', err);
-	});
-}
-	</script>
 </body>
 </html>
